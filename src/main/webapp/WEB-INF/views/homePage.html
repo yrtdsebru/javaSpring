@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Users</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body onload="load();">
+ 
+ <div class="container">
+  <div class="panel panel-default">
+	 <a th:href="@{getPageUserAdd}" class="btn btn-info">Kullanıcı Ekle</a>
+        <table id="table " border="1" class="table table-hover">
+            <tr> 
+	            <th> Kullanıcı ID </th> 
+	            <th> Name </th> 
+	            <th> Email </th> 
+	            <th> Edit </th> 
+	            <th> Delete </th> 
+            </tr> 
+            <tbody>
+        <tr th:each="data : ${datas}">
+	        <td th:text="${data.userId}"/>
+	        <td th:text="${data.userName}"/>
+	        <td th:text="${data.email}"/>
+	        <td> <a class="btn btn-info fa fa-pencil" th:href="@{edit/{id}(id=${data.userId})}"  > Edit </a>  </td> 
+	   	    <td> <a class="btn btn-danger fa fa-trash-o" th:href="@{userDelete/{id}(id=${data.userId})}"  > Delete </a>  </td> 
+   		</tr>      
+    	</tbody>   
+        </table>
+       
+      </div>      
+ </div>    
+     
+</body>
+</html>
